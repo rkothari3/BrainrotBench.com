@@ -20,6 +20,7 @@ export default function ComparisonView() {
   const [voted, setVoted] = useState(false);
   const [isPlayingA, setIsPlayingA] = useState(false);
   const [isPlayingB, setIsPlayingB] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const videoRefA = useRef<HTMLVideoElement>(null);
   const videoRefB = useRef<HTMLVideoElement>(null);
@@ -28,10 +29,17 @@ export default function ComparisonView() {
     fetch("/summary.json")
       .then((r) => r.json())
       .then((data: VideoItem[]) => {
-        setVideos(data);
-        pickTwo(data);
+        if (data && data.length > 0) {
+          setVideos(data);
+          pickTwo(data);
+        } else {
+          setError("No videos found");
+        }
       })
-      .catch(console.error)
+      .catch((err) => {
+        console.error(err);
+        setError("Failed to load videos");
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -58,6 +66,14 @@ export default function ComparisonView() {
     pickTwo(videos);
   };
 
+  if (error) {
+    return (
+      <div className="w-full max-w-5xl flex flex-col items-center py-20">
+        <p className="text-red-500">{error}</p>
+      </div>
+    );
+  }
+  
   if (loading || !videoA || !videoB) {
     return (
       <div className="w-full max-w-5xl flex flex-col items-center py-20">
@@ -67,7 +83,10 @@ export default function ComparisonView() {
     );
   }
 
-  const src = (p: string) => p.replace(/^public\//, "/");
+  const src = (p: string) => {
+    if (!p) return "";
+    return p.replace(/^public\//, "/");
+  };
 
   return (
     <div className="w-full max-w-5xl mx-auto">
@@ -98,6 +117,11 @@ export default function ComparisonView() {
               <Play className="h-6 w-6" />
             </Button>
           )}
+          <div className="absolute top-2 left-2">
+            <span className="bg-black/70 text-white px-2 py-1 rounded text-sm">
+              {videoA.idea_name}
+            </span>
+          </div>
           {voted && (
             <div className="absolute bottom-2 right-2">
               <span className="bg-black/70 text-white px-2 py-1 rounded text-sm">
@@ -128,6 +152,11 @@ export default function ComparisonView() {
               <Play className="h-6 w-6" />
             </Button>
           )}
+          <div className="absolute top-2 left-2">
+            <span className="bg-black/70 text-white px-2 py-1 rounded text-sm">
+              {videoB.idea_name}
+            </span>
+          </div>
           {voted && (
             <div className="absolute bottom-2 right-2">
               <span className="bg-black/70 text-white px-2 py-1 rounded text-sm">
