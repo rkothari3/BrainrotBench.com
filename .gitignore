@@ -38,3 +38,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+output*/
+public/**/*.jpg
+public/**/*.txt
+public/**/*.json
+public/**/*.mp3
+!public/summary.json

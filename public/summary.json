@@ -1,0 +1,26 @@
+[
+  {
+    "model": "openai/gpt-4.1",
+    "idea_name": "Farfalla Lampadina",
+    "video_path": "public/openai_gpt-4.1_Farfalla_Lampadina/Farfalla_Lampadina_final.mp4",
+    "reasoning": "Image 1 is the best choice because it features a whimsical, well-lit butterfly lamp with a big, friendly smile and an overall animated, joyful appearance that aligns perfectly with the playful exclamation 'mamma mia, farfalla lampadina!' The glowing lights accentuate the butterfly wings, making it stand out and feel magical, which is great for capturing the surprise and delight in the Italian phrase."
+  },
+  {
+    "model": "google/gemini-2.5-flash-preview",
+    "idea_name": "Tacchino Bombardino",
+    "video_path": "public/google_gemini-2.5-flash-preview_Tacchino_Bombardino/Tacchino_Bombardino_final.mp4",
+    "reasoning": "Image 1 has the best turkey pose and expression that fits the description of \"Tacchino Bombardino\" saying \"Mama Mia!\"  The sunglasses on its beak add a touch of comedic flair that aligns with the phrase."
+  },
+  {
+    "model": "google/gemini-2.5-pro-preview-03-25",
+    "idea_name": "Elefante Espresso",
+    "video_path": "public/google_gemini-2.5-pro-preview-03-25_Elefante_Espresso/Elefante_Espresso_final.mp4",
+    "reasoning": "Image 1 provides the most creative and relevant integration of the espresso machine with the elephant. The machine's steam nozzle replaces or augments the trunk, directly referencing both 'Caff\u00e8' (coffee) and the 'Tromba Forte' (Loud Trumpet) aspect through the steaming action, creating a strong visual metaphor."
+  },
+  {
+    "model": "openai/o4-mini-high",
+    "idea_name": "tornellino fenicino",
+    "video_path": "public/openai_o4-mini-high_tornellino_fenicino/tornellino_fenicino_final.mp4",
+    "reasoning": "This image best captures the playful word\u2010play of \u201ctornellino fenicino\u201d \u2013 a flamingo (\u201cfenicino\u201d) caught clicking through a turnstile (\u201ctornellino\u201d) with a clear visual \u201cclic clac\u201d moment. The pun is immediately obvious, the composition is sharp, and the scene feels delightfully surreal, matching the Italian voice cue perfectly."
+  }
+]
