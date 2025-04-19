@@ -4,9 +4,11 @@ import Link from "next/link"
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { useModels } from "@/contexts/models-context"
 import { calculateWinRate } from "@/lib/models"
+import { Loader2, AlertCircle } from "lucide-react"
+import { Alert, AlertDescription } from "@/components/ui/alert"
 
 export default function Leaderboard() {
-  const { models } = useModels()
+  const { models, loading, error } = useModels()
 
   // Sort models by ELO rating (highest first)
   const sortedModels = [...models].sort((a, b) => b.eloRating - a.eloRating)
@@ -33,35 +35,49 @@ export default function Leaderboard() {
         <h1 className="text-4xl font-bold tracking-tight mb-2 text-center">BRAINROT BENCH</h1>
         <h2 className="text-2xl font-semibold mb-6 text-center">Leaderboard</h2>
 
-        <Table>
-          <TableCaption>Current standings based on user votes</TableCaption>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="w-[80px]">Rank</TableHead>
-              <TableHead>Model</TableHead>
-              <TableHead className="text-right">ELO Score</TableHead>
-              <TableHead className="text-right">Win Rate</TableHead>
-              <TableHead className="text-right">Wins</TableHead>
-              <TableHead className="text-right">Losses</TableHead>
-              <TableHead className="text-right">Ties</TableHead>
-              <TableHead className="text-right">Total Votes</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {sortedModels.map((model, index) => (
-              <TableRow key={model.id}>
-                <TableCell className="font-medium">{index + 1}</TableCell>
-                <TableCell>{model.name}</TableCell>
-                <TableCell className="text-right">{model.eloRating}</TableCell>
-                <TableCell className="text-right">{calculateWinRate(model).toFixed(1)}%</TableCell>
-                <TableCell className="text-right">{model.wins}</TableCell>
-                <TableCell className="text-right">{model.losses}</TableCell>
-                <TableCell className="text-right">{model.ties}</TableCell>
-                <TableCell className="text-right">{model.totalVotes}</TableCell>
+        {error && (
+          <Alert variant="destructive" className="mb-4">
+            <AlertCircle className="h-4 w-4" />
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
+        )}
+
+        {loading ? (
+          <div className="flex flex-col justify-center items-center py-20">
+            <Loader2 className="h-10 w-10 animate-spin mb-4" />
+            <p className="text-muted-foreground">Loading leaderboard...</p>
+          </div>
+        ) : (
+          <Table>
+            <TableCaption>Current standings based on user votes</TableCaption>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[80px]">Rank</TableHead>
+                <TableHead>Model</TableHead>
+                <TableHead className="text-right">ELO Score</TableHead>
+                <TableHead className="text-right">Win Rate</TableHead>
+                <TableHead className="text-right">Wins</TableHead>
+                <TableHead className="text-right">Losses</TableHead>
+                <TableHead className="text-right">Ties</TableHead>
+                <TableHead className="text-right">Total Votes</TableHead>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+            </TableHeader>
+            <TableBody>
+              {sortedModels.map((model, index) => (
+                <TableRow key={model.id}>
+                  <TableCell className="font-medium">{index + 1}</TableCell>
+                  <TableCell>{model.name}</TableCell>
+                  <TableCell className="text-right">{model.eloRating}</TableCell>
+                  <TableCell className="text-right">{calculateWinRate(model).toFixed(1)}%</TableCell>
+                  <TableCell className="text-right">{model.wins}</TableCell>
+                  <TableCell className="text-right">{model.losses}</TableCell>
+                  <TableCell className="text-right">{model.ties}</TableCell>
+                  <TableCell className="text-right">{model.totalVotes}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        )}
       </div>
     </main>
   )

@@ -3,28 +3,38 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { Loader2, Maximize2, Volume2, VolumeX } from "lucide-react"
+import { Loader2, Maximize2, Volume2, VolumeX, AlertCircle } from "lucide-react"
 import { useModels } from "@/contexts/models-context"
+import { Alert, AlertDescription } from "@/components/ui/alert"
 
 interface ComparisonViewProps {
   initialPrompt?: string
 }
 
 export default function ComparisonView({ initialPrompt }: ComparisonViewProps) {
-  const { selectedModelA, selectedModelB, updateModelsAfterVote, selectNewModels } = useModels()
-  const [loading, setLoading] = useState(true)
+  const {
+    selectedModelA,
+    selectedModelB,
+    updateModelsAfterVote,
+    selectNewModels,
+    loading: modelsLoading,
+    error,
+  } = useModels()
+  const [contentLoading, setContentLoading] = useState(true)
   const [voted, setVoted] = useState(false)
   const [audioPlayingA, setAudioPlayingA] = useState(false)
   const [audioPlayingB, setAudioPlayingB] = useState(false)
 
   // Simulate loading content
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false)
-    }, 2000)
+    if (!modelsLoading && selectedModelA && selectedModelB) {
+      const timer = setTimeout(() => {
+        setContentLoading(false)
+      }, 2000)
 
-    return () => clearTimeout(timer)
-  }, [selectedModelA, selectedModelB])
+      return () => clearTimeout(timer)
+    }
+  }, [selectedModelA, selectedModelB, modelsLoading])
 
   const handleVote = (choice: "A" | "B" | "TIE") => {
     setVoted(true)
@@ -37,7 +47,7 @@ export default function ComparisonView({ initialPrompt }: ComparisonViewProps) {
   }
 
   const handleNextComparison = () => {
-    setLoading(true)
+    setContentLoading(true)
     setVoted(false)
 
     // Select new models for comparison
@@ -54,16 +64,26 @@ export default function ComparisonView({ initialPrompt }: ComparisonViewProps) {
     if (audioPlayingA) setAudioPlayingA(false)
   }
 
-  if (!selectedModelA || !selectedModelB) {
+  const loading = modelsLoading || contentLoading
+
+  if (modelsLoading || !selectedModelA || !selectedModelB) {
     return (
-      <div className="w-full max-w-5xl flex justify-center items-center py-20">
-        <Loader2 className="h-10 w-10 animate-spin" />
+      <div className="w-full max-w-5xl flex flex-col justify-center items-center py-20">
+        <Loader2 className="h-10 w-10 animate-spin mb-4" />
+        <p className="text-muted-foreground">Loading models...</p>
       </div>
     )
   }
 
   return (
     <div className="w-full max-w-5xl">
+      {error && (
+        <Alert variant="destructive" className="mb-4">
+          <AlertCircle className="h-4 w-4" />
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
+      )}
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         {/* Model A */}
         <Card className="relative overflow-hidden aspect-[4/3] flex items-center justify-center bg-black/70 backdrop-blur-sm border-white/20">
