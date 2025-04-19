@@ -38,7 +38,7 @@ export async function loadBrainrotModels(): Promise<Model[]> {
         ties: 0,
         totalVotes: 0,
         ideaName: item.idea_name,
-        videoPath: item.video_path.replace("public", ""),
+        videoPath: item.video_path.replace(/^public\//, "/"),
         reasoning: item.reasoning,
       };
     });

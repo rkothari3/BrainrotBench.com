@@ -22,5 +22,53 @@
     "idea_name": "tornellino fenicino",
     "video_path": "public/openai_o4-mini-high_tornellino_fenicino/tornellino_fenicino_final.mp4",
     "reasoning": "This image best captures the playful word\u2010play of \u201ctornellino fenicino\u201d \u2013 a flamingo (\u201cfenicino\u201d) caught clicking through a turnstile (\u201ctornellino\u201d) with a clear visual \u201cclic clac\u201d moment. The pun is immediately obvious, the composition is sharp, and the scene feels delightfully surreal, matching the Italian voice cue perfectly."
+  },
+  {
+    "model": "openai/gpt-4.1",
+    "idea_name": "Polpastrella Lampadina",
+    "video_path": "public/openai_gpt-4.1_Polpastrella_Lampadina/Polpastrella_Lampadina_final.mp4",
+    "reasoning": "Image 2 best represents the concept of 'Polpastrella Lampadina' with an octopus whose head is a clear light bulb, not only visibly glowing and sparking but also perfectly centered and vivid. The environment (colorful wires, cozy room with books and soft light in the background) highlights both the playful and inventive character appropriate for the cheerful Italian phrase 'Luccica polpastrella, mamma mia!'. The octopus looks lively, the lamp-bulb effect is striking, and the sparks convey the sense of 'luccica' (sparkle/shines)."
+  },
+  {
+    "model": "openai/o4-mini-high",
+    "idea_name": "Frullafante",
+    "video_path": "public/openai_o4-mini-high_Frullafante/Frullafante_final.mp4",
+    "reasoning": "This image most clearly and humorously captures the portmanteau \u201cFrullafante\u201d by depicting an elephant (\u201celefante\u201d) inside a blender (\u201cfrulla\u201d), making the pun immediately obvious. The composition is high-quality, with the elephant\u2019s trunk and ears integrated into the blender scene, ensuring viewers instantly understand the playful concept."
+  },
+  {
+    "model": "google/gemini-2.5-flash-preview",
+    "idea_name": "Pantherino Tractorino",
+    "video_path": "public/google_gemini-2.5-flash-preview_Pantherino_Tractorino/Pantherino_Tractorino_final.mp4",
+    "reasoning": "Image 5 features a large black panther prominently positioned with its paw on a tractor tire, creating a strong visual combination of the two elements. The panther has a clear view of the camera while the tractor is well-defined, aligning with the phrase 'Pantherino Tractorino, che combinazione spettacolare!'. None of the other images are as high quality in comparison."
+  },
+  {
+    "model": "google/gemini-2.5-pro-preview-03-25",
+    "idea_name": "Orsolato Cremoso",
+    "video_path": "public/google_gemini-2.5-pro-preview-03-25_Orsolato_Cremoso/Orsolato_Cremoso_final.mp4",
+    "reasoning": "Image 5 provides the clearest and most balanced composition. The bear ('Orso') is centered and friendly-looking, and it holds two cones featuring multiple scoops and colors (pink, green, white), strongly conveying the 'Cremoso' (creamy) aspect with variety. The dropped ice cream adds a playful touch without distracting from the main subject. Compared to others, image 2 is too surreal, image 3 has oversized cones, image 1 has fewer flavors, and image 4's bear is slightly turned away."
+  },
+  {
+    "model": "openai/gpt-4.1",
+    "idea_name": "Gelatigrillo",
+    "video_path": "public/openai_gpt-4.1_Gelatigrillo/Gelatigrillo_final.mp4",
+    "reasoning": "Image 5 best represents the fun 'Gelatigrillo' concept by combining the look of a grasshopper with unmistakably vibrant, multicolored Italian gelato swirled on its body and a classic cone as its lower half. The two cherries on top add to the whimsical, 'mamma mia, gelatigrillo arrivato!' feeling, and the bright, sunlit piazza background emphasizes the Italian setting. Its playful colors, cone tail, and clear gelato-cherry details make it visually striking and memorable."
+  },
+  {
+    "model": "google/gemini-2.5-flash-preview",
+    "idea_name": "Carabiniere Scorpione",
+    "video_path": "public/google_gemini-2.5-flash-preview_Carabiniere_Scorpione/Carabiniere_Scorpione_final.mp4",
+    "reasoning": "All images combine a Carabiniere (Italian police officer) with a scorpion. Image 1 is the most striking visually and the scorpion is integrated well with the figure. The pose is strong and the composition is good."
+  },
+  {
+    "model": "openai/o4-mini-high",
+    "idea_name": "Gelatopo",
+    "video_path": "public/openai_o4-mini-high_Gelatopo/Gelatopo_final.mp4",
+    "reasoning": "This image perfectly blends a scoop of pink gelato with mouse-like features\u2014ears, eyes, whiskers, and a curled tail\u2014capturing the playful fusion implied by the name \u201cGelatopo.\u201d The pastel color palette and melting-drip detail emphasize the ice cream aspect, while the mouse characteristics are clearly recognizable, making it the most fitting representation."
+  },
+  {
+    "model": "google/gemini-2.5-pro-preview-03-25",
+    "idea_name": "Canguro Gondoliere",
+    "video_path": "public/google_gemini-2.5-pro-preview-03-25_Canguro_Gondoliere/Canguro_Gondoliere_final.mp4",
+    "reasoning": "Image 3 is chosen as it best captures the essence of a 'Canguro Gondoliere' in action. The kangaroo wears the iconic striped shirt and straw hat, is positioned correctly in a gondola within a Venetian canal setting, and strikes a dynamic, welcoming pose with arms outstretched. This pose perfectly complements the accompanying Italian phrase 'Andiamo, bellissimi!', conveying enthusiasm and invitation. Images 2 and 5 have distracting anatomical oddities (the belly), image 4 features two kangaroos and a strange pose, while image 1 is more static compared to the chosen one."
   }
 ]
