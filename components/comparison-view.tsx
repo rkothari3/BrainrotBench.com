@@ -3,15 +3,8 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import {
-  Loader2,
-  Volume2,
-  VolumeX,
-  Play,
-  Pause,
-} from "lucide-react";
+import { Loader2, Play, Pause } from "lucide-react";
 
-// Define the structure of our video items
 interface VideoItem {
   model: string;
   idea_name: string;
@@ -25,152 +18,86 @@ export default function ComparisonView() {
   const [videoB, setVideoB] = useState<VideoItem | null>(null);
   const [loading, setLoading] = useState(true);
   const [voted, setVoted] = useState(false);
-  const [audioPlayingA, setAudioPlayingA] = useState(false);
-  const [audioPlayingB, setAudioPlayingB] = useState(false);
   const [isPlayingA, setIsPlayingA] = useState(false);
   const [isPlayingB, setIsPlayingB] = useState(false);
+
   const videoRefA = useRef<HTMLVideoElement>(null);
   const videoRefB = useRef<HTMLVideoElement>(null);
 
-  // Load videos from summary.json
   useEffect(() => {
-    const fetchVideos = async () => {
-      try {
-        const response = await fetch("/summary.json");
-        const data = await response.json();
+    fetch("/summary.json")
+      .then((r) => r.json())
+      .then((data: VideoItem[]) => {
         setVideos(data);
-        selectRandomVideos(data);
-      } catch (error) {
-        console.error("Error loading videos:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchVideos();
+        pickTwo(data);
+      })
+      .catch(console.error)
+      .finally(() => setLoading(false));
   }, []);
 
-  // Select two random videos from the array
-  const selectRandomVideos = (videoArray: VideoItem[]) => {
-    if (videoArray.length < 2) return;
-
-    const indexA = Math.floor(Math.random() * videoArray.length);
-    let indexB = Math.floor(Math.random() * (videoArray.length - 1));
-    if (indexB >= indexA) indexB++;
-
-    setVideoA(videoArray[indexA]);
-    setVideoB(videoArray[indexB]);
+  const pickTwo = (arr: VideoItem[]) => {
+    if (arr.length < 2) return;
+    const i = Math.floor(Math.random() * arr.length);
+    let j = Math.floor(Math.random() * (arr.length - 1));
+    if (j >= i) j++;
+    setVideoA(arr[i]);
+    setVideoB(arr[j]);
   };
 
-  const handleVote = (choice: "A" | "B" | "TIE") => {
+  const handleVote = (c: "A" | "B" | "TIE") => {
     setVoted(true);
-    console.log(`Voted for ${choice}`);
+    console.log("voted", c);
   };
 
-  const handleNextComparison = () => {
+  const next = () => {
     setVoted(false);
-    setAudioPlayingA(false);
-    setAudioPlayingB(false);
     setIsPlayingA(false);
     setIsPlayingB(false);
-    selectRandomVideos(videos);
-  };
-
-  const toggleAudioA = () => {
-    const newAudioState = !audioPlayingA;
-    setAudioPlayingA(newAudioState);
-    if (audioPlayingB) setAudioPlayingB(false);
-
-    if (videoRefA.current) {
-      videoRefA.current.muted = !newAudioState;
-      if (newAudioState && !isPlayingA) {
-        videoRefA.current.play();
-        setIsPlayingA(true);
-      }
-    }
-  };
-
-  const toggleAudioB = () => {
-    const newAudioState = !audioPlayingB;
-    setAudioPlayingB(newAudioState);
-    if (audioPlayingA) setAudioPlayingA(false);
-
-    if (videoRefB.current) {
-      videoRefB.current.muted = !newAudioState;
-      if (newAudioState && !isPlayingB) {
-        videoRefB.current.play();
-        setIsPlayingB(true);
-      }
-    }
-  };
-
-  const togglePlayA = () => {
-    if (videoRefA.current) {
-      if (isPlayingA) {
-        videoRefA.current.pause();
-      } else {
-        videoRefA.current.play();
-      }
-      setIsPlayingA(!isPlayingA);
-    }
-  };
-
-  const togglePlayB = () => {
-    if (videoRefB.current) {
-      if (isPlayingB) {
-        videoRefB.current.pause();
-      } else {
-        videoRefB.current.play();
-      }
-      setIsPlayingB(!isPlayingB);
-    }
+    videoRefA.current?.pause();
+    videoRefB.current?.pause();
+    pickTwo(videos);
   };
 
   if (loading || !videoA || !videoB) {
     return (
-      <div className="w-full max-w-5xl flex flex-col justify-center items-center py-20">
+      <div className="w-full max-w-5xl flex flex-col items-center py-20">
         <Loader2 className="h-10 w-10 animate-spin mb-4" />
-        <p className="text-muted-foreground">Loading videos...</p>
+        <p className="text-muted-foreground">Loading…</p>
       </div>
     );
   }
 
+  const src = (p: string) => p.replace(/^public\//, "/");
+
   return (
-    <div className="w-full max-w-5xl">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-        {/* Video A */}
-        <Card className="relative overflow-hidden aspect-[4/3] flex items-center justify-center bg-black/70 backdrop-blur-sm border-white/20">
-          <div className="absolute top-2 right-2 flex gap-2">
+    <div className="w-full max-w-5xl mx-auto">
+      <div className="grid md:grid-cols-2 gap-4 mb-6">
+        {/* VIDEO A */}
+        <Card className="relative aspect-[4/3] bg-black/70">
+          <video
+            ref={videoRefA}
+            src={src(videoA.video_path)}
+            autoPlay
+            muted={false}
+            playsInline
+            onPlay={() => setIsPlayingA(true)}
+            onPause={() => setIsPlayingA(false)}
+            onEnded={() => {
+              const vb = videoRefB.current!;
+              vb.muted = false;
+              vb.play().then(() => setIsPlayingB(true));
+            }}
+            className="w-full h-full object-cover"
+          />
+          {!isPlayingA && (
             <Button
-              variant="ghost"
               size="icon"
-              onClick={toggleAudioA}
-              className="bg-black/50 hover:bg-black/70"
+              className="absolute inset-0 m-auto bg-black/50"
+              onClick={() => videoRefA.current?.play()}
             >
-              {audioPlayingA ? (
-                <Volume2 className="h-5 w-5" />
-              ) : (
-                <VolumeX className="h-5 w-5" />
-              )}
+              <Play className="h-6 w-6" />
             </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={togglePlayA}
-              className="bg-black/50 hover:bg-black/70"
-            >
-              {isPlayingA ? (
-                <Pause className="h-5 w-5" />
-              ) : (
-                <Play className="h-5 w-5" />
-              )}
-            </Button>
-          </div>
-          <div className="absolute bottom-2 left-2">
-            <span className="bg-black/70 text-white px-2 py-1 rounded text-sm">
-              A: {videoA.idea_name}
-            </span>
-          </div>
+          )}
           {voted && (
             <div className="absolute bottom-2 right-2">
               <span className="bg-black/70 text-white px-2 py-1 rounded text-sm">
@@ -178,63 +105,29 @@ export default function ComparisonView() {
               </span>
             </div>
           )}
-          <video
-            ref={videoRefA}
-            src={videoA.video_path.replace(/^public\//, "/")}
-            muted={!audioPlayingA}
-            preload="auto"
-            loop
-            className="w-full h-full object-cover"
-            onClick={togglePlayA}
-            onLoadedData={() => console.log("Video A loaded")}
-            onError={(e) => console.error("Video A error:", e)}
-          />
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            {!isPlayingA && (
-              <Button
-                className="rounded-full bg-black/70 hover:bg-black/50 pointer-events-auto"
-                size="icon"
-                onClick={togglePlayA}
-              >
-                <Play className="h-6 w-6" />
-              </Button>
-            )}
-          </div>
         </Card>
 
-        {/* Video B */}
-        <Card className="relative overflow-hidden aspect-[4/3] flex items-center justify-center bg-black/70 backdrop-blur-sm border-white/20">
-          <div className="absolute top-2 right-2 flex gap-2">
+        {/* VIDEO B */}
+        <Card className="relative aspect-[4/3] bg-black/70">
+          <video
+            ref={videoRefB}
+            src={src(videoB.video_path)}
+            autoPlay={false}
+            muted={false}
+            playsInline
+            onPlay={() => setIsPlayingB(true)}
+            onPause={() => setIsPlayingB(false)}
+            className="w-full h-full object-cover"
+          />
+          {!isPlayingB && (
             <Button
-              variant="ghost"
               size="icon"
-              onClick={toggleAudioB}
-              className="bg-black/50 hover:bg-black/70"
+              className="absolute inset-0 m-auto bg-black/50"
+              onClick={() => videoRefB.current?.play()}
             >
-              {audioPlayingB ? (
-                <Volume2 className="h-5 w-5" />
-              ) : (
-                <VolumeX className="h-5 w-5" />
-              )}
+              <Play className="h-6 w-6" />
             </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={togglePlayB}
-              className="bg-black/50 hover:bg-black/70"
-            >
-              {isPlayingB ? (
-                <Pause className="h-5 w-5" />
-              ) : (
-                <Play className="h-5 w-5" />
-              )}
-            </Button>
-          </div>
-          <div className="absolute bottom-2 left-2">
-            <span className="bg-black/70 text-white px-2 py-1 rounded text-sm">
-              B: {videoB.idea_name}
-            </span>
-          </div>
+          )}
           {voted && (
             <div className="absolute bottom-2 right-2">
               <span className="bg-black/70 text-white px-2 py-1 rounded text-sm">
@@ -242,28 +135,6 @@ export default function ComparisonView() {
               </span>
             </div>
           )}
-          <video
-            ref={videoRefB}
-            src={videoB.video_path.replace(/^public\//, "/")}
-            muted={!audioPlayingB}
-            preload="auto"
-            loop
-            className="w-full h-full object-cover"
-            onClick={togglePlayB}
-            onLoadedData={() => console.log("Video B loaded")}
-            onError={(e) => console.error("Video B error:", e)}
-          />
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            {!isPlayingB && (
-              <Button
-                className="rounded-full bg-black/70 hover:bg-black/50 pointer-events-auto"
-                size="icon"
-                onClick={togglePlayB}
-              >
-                <Play className="h-6 w-6" />
-              </Button>
-            )}
-          </div>
         </Card>
       </div>
 
@@ -300,7 +171,7 @@ export default function ComparisonView() {
       {voted && (
         <div className="mt-6 text-center">
           <Button
-            onClick={handleNextComparison}
+            onClick={next}
             className="px-8 bg-green-600 hover:bg-green-700"
           >
             Next Comparison
