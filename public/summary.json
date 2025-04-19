@@ -70,5 +70,197 @@
     "idea_name": "Canguro Gondoliere",
     "video_path": "public/google_gemini-2.5-pro-preview-03-25_Canguro_Gondoliere/Canguro_Gondoliere_final.mp4",
     "reasoning": "Image 3 is chosen as it best captures the essence of a 'Canguro Gondoliere' in action. The kangaroo wears the iconic striped shirt and straw hat, is positioned correctly in a gondola within a Venetian canal setting, and strikes a dynamic, welcoming pose with arms outstretched. This pose perfectly complements the accompanying Italian phrase 'Andiamo, bellissimi!', conveying enthusiasm and invitation. Images 2 and 5 have distracting anatomical oddities (the belly), image 4 features two kangaroos and a strange pose, while image 1 is more static compared to the chosen one."
+  },
+  {
+    "model": "openai/gpt-4.1",
+    "idea_name": "Gelatopardo",
+    "video_path": "public/openai_gpt-4.1_Gelatopardo/Gelatopardo_final.mp4",
+    "reasoning": "Image 1 best captures the playful and whimsical spirit of 'Gelatopardo' with an Italian vibe. The leopard is creatively merged with colorful scoops of gelato and sprinkles, and it is holding an ice cream cone in its paw, adding a delightful, almost surreal effect. The vintage gelato cart and the expressive, slightly surprised look on the leopard's face perfectly fit the Italian exclamation 'Mamma mia, gelatopardo!' The overflowing gelato and sprinkles further emphasize the gelato theme, making it both whimsical and appetizing."
+  },
+  {
+    "model": "google/gemini-2.5-flash-preview",
+    "idea_name": "Panzeratto Giraffa",
+    "video_path": "public/google_gemini-2.5-flash-preview_Panzeratto_Giraffa/Panzeratto_Giraffa_final.mp4",
+    "reasoning": "Image 3 appears to be a giraffe made of some dough-like or bread-like material, resembling a panzerotto (a savory turnover typical of Puglia, Italy). The image context of the title and audio ('Panzeratto Giraffa!' which translates to 'Panzeratto Giraffe!' in Italian) points to this interpretation. The other images show realistic giraffes."
+  },
+  {
+    "model": "google/gemini-2.5-pro-preview-03-25",
+    "idea_name": "Pinguino Pizzaiolo",
+    "video_path": "public/google_gemini-2.5-pro-preview-03-25_Pinguino_Pizzaiolo/Pinguino_Pizzaiolo_final.mp4",
+    "reasoning": "Image 1 provides the clearest and most appealing depiction of a 'Pinguino Pizzaiolo'. The penguin, wearing a chef's hat, proudly holds a realistic and appetizing pizza. The composition is well-balanced with a relevant background featuring a pizza oven, enhancing the theme. Compared to the others, the pizza looks well-made and the penguin's pose suggests presenting its creation, fitting the exclamation 'Mamma mia, che pizza!'. Image 2 is confusing, image 3 has odd textures, image 4's pizza is less impressive, and image 5's pizza looks slightly small."
+  },
+  {
+    "model": "openai/o4-mini-high",
+    "idea_name": "Asinanas",
+    "video_path": "public/openai_o4-mini-high_Asinanas/Asinanas_final.mp4",
+    "reasoning": "This playful illustration most clearly marries the donkey (asino) and pineapple (ananas) concept in a single, eye\u2011catching image: the donkey\u2019s ears, legs, and tail combined seamlessly with the pineapple body create an immediate visual pun that aligns perfectly with the name \u201cAsinanas!\u201d and would pair well with the Italian voiceover. It\u2019s both charming and instantly recognizable."
+  },
+  {
+    "model": "openai/gpt-4.1",
+    "idea_name": "Gufoniglio Lampadino",
+    "video_path": "public/openai_gpt-4.1_Gufoniglio_Lampadino/Gufoniglio_Lampadino_final.mp4",
+    "reasoning": "Image 1 best represents the whimsical character 'Gufoniglio Lampadino' with a creative blend of an owl (gufo) and a lamp (lampadino), as the owl is physically merged with the lamp, glowing warmly to 'illuminate the night.' The owl's expressive, wide-eyed look matches the surprised and enthusiastic Italian phrase 'mamma mia, illumina la notte!' while the cozy setting evokes the nighttime concept. This fusion is more seamless, striking, and literal compared to the others."
+  },
+  {
+    "model": "google/gemini-2.5-flash-preview",
+    "idea_name": "Scopa Pesciolando",
+    "video_path": "public/google_gemini-2.5-flash-preview_Scopa_Pesciolando/Scopa_Pesciolando_final.mp4",
+    "reasoning": "The Italian phrase \"Scopa Pesciolando\" literally translates to \"Broom Fishing\". All the images depict a fish being used as a broom or a broom sweeping a fish. Image 1 best represents the concept with a broom actively sweeping a fish on the beach, clearly illustrating the idea of \"broom fishing\"."
+  },
+  {
+    "model": "google/gemini-2.5-pro-preview-03-25",
+    "idea_name": "Capibarro Martello",
+    "video_path": "public/google_gemini-2.5-pro-preview-03-25_Capibarro_Martello/Capibarro_Martello_final.mp4",
+    "reasoning": "Image 2 is the most dynamic and direct representation of 'Capibarro Martello'. The capybara is holding both hammers aloft symmetrically, facing forward with a determined expression. This pose best conveys the 'Smash Smash!' action implied by the name and phrase, appearing ready and powerful."
+  },
+  {
+    "model": "openai/o4-mini-high",
+    "idea_name": "Caffelante",
+    "video_path": "public/openai_o4-mini-high_Caffelante/Caffelante_final.mp4",
+    "reasoning": "This image best captures the playful spirit of \u201cCaffelante,\u201d blending an eye\u2010catching golden elephant design (hinting at \u2018elephant in the room\u2019) with visible coffee beans and a steaming espresso cup, all elements that reinforce the Italian\u2010style espresso motto \u201cCaffelante espresso!\u201d"
+  },
+  {
+    "model": "openai/gpt-4.1",
+    "idea_name": "Gelatopo Pinguino",
+    "video_path": "public/openai_gpt-4.1_Gelatopo_Pinguino/Gelatopo_Pinguino_final.mp4",
+    "reasoning": "Image 3 best captures the whimsical and charming idea of 'Gelatopo Pinguino' with bright, colorful gelato scoops making up the penguin's body, vibrant waffle wings, a cute penguin face, and a clearly visible Italian flag. The beach background and melting effect capture both the 'freddissimo' (very cold) gelato and the contrast of being at the warm seaside, fitting the exclamation 'mamma mia, freddissimo gelatopo pinguino!' perfectly. The penguin's joyful expression aligns well with a fun Italian voiceover, making the overall presentation the most appealing and characterful of the options."
+  },
+  {
+    "model": "google/gemini-2.5-flash-preview",
+    "idea_name": "Pinguino Spaziale",
+    "video_path": "public/google_gemini-2.5-flash-preview_Pinguino_Spaziale/Pinguino_Spaziale_final.mp4",
+    "reasoning": "Image 1 features a dynamic background with a swirling ocean and a vibrant sunset, making it visually striking and engaging."
+  },
+  {
+    "model": "google/gemini-2.5-pro-preview-03-25",
+    "idea_name": "Pinguino Radiatoro",
+    "video_path": "public/google_gemini-2.5-pro-preview-03-25_Pinguino_Radiatoro/Pinguino_Radiatoro_final.mp4",
+    "reasoning": "Image 1 provides the clearest and most direct visualization of the combined concept 'Pinguino Radiatoro'. The radiator appears integrated into the penguin's body, effectively merging the two elements into one entity, which best fits the composite name. The penguin is clearly visible, facing forward, and the composition is balanced and impactful."
+  },
+  {
+    "model": "openai/o4-mini-high",
+    "idea_name": "frullorana",
+    "video_path": "public/openai_o4-mini-high_frullorana/frullorana_final.mp4",
+    "reasoning": "This image most clearly embodies the \u201cfrullorana\u201d concept by seamlessly merging a frog with a blender: the frog\u2019s body is literally inside the blender jar, complete with swirling bubbles that evoke the \u201cbrrr brrr\u201d blending sound. It\u2019s visually clear, playful, and instantly communicates the pun in Italian."
+  },
+  {
+    "model": "openai/gpt-4.1",
+    "idea_name": "Gufolampadino",
+    "video_path": "public/openai_gpt-4.1_Gufolampadino/Gufolampadino_final.mp4",
+    "reasoning": "For the character 'Gufolampadino'\u2014an owl likely associated with a lamp or light element and an Italian exclamation\u2014the best fit is image 2. This owl has literal glowing lamp-like eyes, which playfully and directly reference the 'lampadino' (little lamp) part of the name. The whimsical, animated pose of the owl, along with the clear focus on the glowing eyes, aligns well with an enthusiastic phrase like 'Opa! Gufolampadino!'. Images 1, 3, and 4 show owls with impressive wingspans but lack a pronounced 'lamp' motif, and image 5, despite being cute and mechanical, is less light-oriented and more metallic. Thus, image 2 is the most distinctive and fitting choice."
+  },
+  {
+    "model": "google/gemini-2.5-flash-preview",
+    "idea_name": "Scarafagglio Bombardiero",
+    "video_path": "public/google_gemini-2.5-flash-preview_Scarafagglio_Bombardiero/Scarafagglio_Bombardiero_final.mp4",
+    "reasoning": "Image 1, 4, and 5 are similar in their front-facing perspective and full wing display. Image 5 is slightly blurry, and Image 4's head is tilted upwards, diminishing the 'bombardier' aspect. Image 1 offers a clear, direct view, emphasizing the beetle's form and readiness, which aligns well with the term 'Bombardiero'."
+  },
+  {
+    "model": "google/gemini-2.5-pro-preview-03-25",
+    "idea_name": "Gorillampadina",
+    "video_path": "public/google_gemini-2.5-pro-preview-03-25_Gorillampadina/Gorillampadina_final.mp4",
+    "reasoning": "Image 2 provides a strong composition where the gorilla is actively holding and seemingly examining the very bright lightbulb. This interaction fits well with the excited 'OOOH OOOH BRIGHT!' phrase, suggesting discovery or fascination. The lightbulb filament is prominently bright, and the gorilla's expression is visible and intense, effectively combining the 'Gorilla' and 'Lampadina' elements."
+  },
+  {
+    "model": "openai/o4-mini-high",
+    "idea_name": "pizzariccio",
+    "video_path": "public/openai_o4-mini-high_pizzariccio/pizzariccio_final.mp4",
+    "reasoning": "This image perfectly embodies \u201cpizzariccio\u201d by pairing a hedgehog (riccio) with a slice of pizza, complete with oozing cheese and a golden, crunchy crust\u2014evoking that satisfying \u201ccrunch, crunch, pizzariccio\u201d sound. The warm lighting and high-detail rendering make it visually appealing and clearly convey both the animal and pizza elements in a single, cohesive scene."
+  },
+  {
+    "model": "openai/gpt-4.1",
+    "idea_name": "Spaghettorso Elefantino",
+    "video_path": "public/openai_gpt-4.1_Spaghettorso_Elefantino/Spaghettorso_Elefantino_final.mp4",
+    "reasoning": "Image 2 is the best choice because the entire elephant is made out of spaghetti, including its trunk, legs, body, and ears, with meatballs serving as the inner ear detail. The whimsical and creative fusion of spaghetti and elephant matches perfectly with the playful Italian phrase 'Mamma mia, spaghettorso elefantino!' The background, with pasta sauce splatters, enhances the humorous, kitchen-themed vibe. The other images use spaghetti only as decoration or hair, while this one truly embodies the idea of a 'spaghettorso elefantino.'"
+  },
+  {
+    "model": "openai/o4-mini-high",
+    "idea_name": "Formaggialeone",
+    "video_path": "public/openai_o4-mini-high_Formaggialeone/Formaggialeone_final.mp4",
+    "reasoning": "Image 1 offers the most striking combination of a realistic lion form sculpted entirely from cheese: the detailed cheese texture carries natural rind-like pores, the flowing \u201cmane\u201d convincingly mimics melted cheese strands, and the roaring expression captures the bold spirit of \u201cFormaggialeone!\u201d in a single, memorable visual."
+  },
+  {
+    "model": "google/gemini-2.5-flash-preview",
+    "idea_name": "Pinguino Candelabro",
+    "video_path": "public/google_gemini-2.5-flash-preview_Pinguino_Candelabro/Pinguino_Candelabro_final.mp4",
+    "reasoning": "This image best represents the phrase 'Pinguino Candelabro' because the penguin is holding the candelabra in a classic and deliberate way, making the association very clear. The other images show the candelabra on the head or held less prominently."
+  },
+  {
+    "model": "google/gemini-2.5-pro-preview-03-25",
+    "idea_name": "Motosega Pinguino",
+    "video_path": "public/google_gemini-2.5-pro-preview-03-25_Motosega_Pinguino/Motosega_Pinguino_final.mp4",
+    "reasoning": "Image 5 is the most striking and unique, featuring a double-bladed chainsaw, which adds an element of absurdity and exaggeration that fits well with the slightly comical sound 'Brrrum brrrum squik!'. The other images, while good depictions, are more standard representations of a penguin with a single chainsaw."
+  },
+  {
+    "model": "openai/gpt-4.1",
+    "idea_name": "Gelatone Gattino",
+    "video_path": "public/openai_gpt-4.1_Gelatone_Gattino/Gelatone_Gattino_final.mp4",
+    "reasoning": "Image 5 best captures the playful and whimsical spirit of 'Gelatone Gattino' with the Italian phrase 'Mamma mia, che freddo!' The kitten looks adorably startled, as if surprised by the cold, fitting the 'che freddo' (how cold) exclamation. The ice cream colors are vivid and appealing, the cone is clear, and the background suggests an Italian piazza, strengthening the Italian vibe. The dollop of cream on the kitten's head adds an extra touch of fun and personality."
+  },
+  {
+    "model": "google/gemini-2.5-flash-preview",
+    "idea_name": "Lombardinio Lampadina",
+    "video_path": "public/google_gemini-2.5-flash-preview_Lombardinio_Lampadina/Lombardinio_Lampadina_final.mp4",
+    "reasoning": "The first image provides the best balance between the leopard and the lampadina, with a clear view of both elements. The composition is well-centred, and the lighting highlights the features of the leopard and the lightbulb effectively given the context of a lampadina."
+  },
+  {
+    "model": "openai/o4-mini-high",
+    "idea_name": "Mandolorso",
+    "video_path": "public/openai_o4-mini-high_Mandolorso/Mandolorso_final.mp4",
+    "reasoning": "Tra le cinque proposte, questa immagine \u00e8 la pi\u00f9 efficace perch\u00e9 unisce in modo immediatamente riconoscibile l\u2019orso (orso) e lo strumento (mandolino), rispettando il gioco di parole Mandolorso. La resa \u00e8 nitida e luminosa, il design \u00e8 coerente (le spigolosit\u00e0 e le curve tipiche del mandolino si fondono con il corpo dell\u2019orso) e l\u2019impatto visivo comunica perfettamente \u00abEcco il Mandolorso!\u00bb."
+  },
+  {
+    "model": "google/gemini-2.5-pro-preview-03-25",
+    "idea_name": "Martelleone",
+    "video_path": "public/google_gemini-2.5-pro-preview-03-25_Martelleone/Martelleone_final.mp4",
+    "reasoning": "Image 5 best embodies the 'Martelleone! BUM BUM!' concept. The lion is aggressively roaring while actively wielding the hammer low to the ground, suggesting an imminent or just completed strike, perfectly matching the energetic 'BUM BUM!' sound."
+  },
+  {
+    "model": "openai/o4-mini-high",
+    "idea_name": "Pizzalupino",
+    "video_path": "public/openai_o4-mini-high_Pizzalupino/Pizzalupino_final.mp4",
+    "reasoning": "This image perfectly embodies the playful mash\u2011up of a lupine creature and pizza\u2014melting cheese drips, pepperoni spots on its fur, and a snarling, dynamic pose that matches the spirited Italian pronunciation \u201cPee\u2011dzah\u2011loo\u2011pee\u2011noh!\u201d"
+  },
+  {
+    "model": "openai/gpt-4.1",
+    "idea_name": "Gatto Macchinone",
+    "video_path": "public/openai_gpt-4.1_Gatto_Macchinone/Gatto_Macchinone_final.mp4",
+    "reasoning": "The third image is the best representation of 'Gatto Macchinone' with the Italian phrase. It perfectly blends a fluffy cat's head and paws into the front of a flashy red sports car, creating a whimsical and surreal fusion that feels both playful and exaggerated, matching the tone of 'mamma mia, vroom vroom miagolo!'. The cat appears to be an integral part of the car, which heightens the humor and fits the character concept better than just a cat sitting on or in front of a car."
+  },
+  {
+    "model": "google/gemini-2.5-flash-preview",
+    "idea_name": "Squalo Scarpa",
+    "video_path": "public/google_gemini-2.5-flash-preview_Squalo_Scarpa/Squalo_Scarpa_final.mp4",
+    "reasoning": "The first image is the best because it features the shark very clearly in the foreground while still showing the beach and ocean in the background. It is the most dynamic and engaging image of the set."
+  },
+  {
+    "model": "google/gemini-2.5-pro-preview-03-25",
+    "idea_name": "Formaggio Ratto",
+    "video_path": "public/google_gemini-2.5-pro-preview-03-25_Formaggio_Ratto/Formaggio_Ratto_final.mp4",
+    "reasoning": "Image 5 most effectively captures the excitement implied by the 'Formaggio! Formaggio!' voiceover. The rat is perched prominently on top of a large cheese wheel, conveying a sense of triumph and strong focus on the cheese, making it the most dynamic and thematic choice."
+  },
+  {
+    "model": "openai/gpt-4.1",
+    "idea_name": "Gelatopardo",
+    "video_path": "public/openai_gpt-4.1_Gelatopardo/Gelatopardo_final.mp4",
+    "reasoning": "Image 3 provides the best representation of 'Gelatopardo.' It shows a perfect blend between a leopard and a gelato cone, maintaining both the animal's recognizable features and playful ice cream elements (swirl of cream, cone, sprinkles, and cherry on top). The composition is vibrant, whimsical, and clearly matches the Italian phrase 'Mama mia, gelatopardo!' by capturing both the delight and surprise. The integration of the waffle cone and gelato swirl is clean, making the concept immediately understandable without being too cartoonish or strange."
+  },
+  {
+    "model": "google/gemini-2.5-flash-preview",
+    "idea_name": "Squalo da spiaggia",
+    "video_path": "public/google_gemini-2.5-flash-preview_Squalo_da_spiaggia/Squalo_da_spiaggia_final.mp4",
+    "reasoning": "Image 1 is the best quality (clear, well lit, high resolution). The shark is standing tall and looking directly at the camera. The full body shot on the beach with the sun setting further reinforces the phrase 'Squalo da spiaggia!' (Shark on the beach!)."
+  },
+  {
+    "model": "google/gemini-2.5-pro-preview-03-25",
+    "idea_name": "Giraffa Trattore",
+    "video_path": "public/google_gemini-2.5-pro-preview-03-25_Giraffa_Trattore/Giraffa_Trattore_final.mp4",
+    "reasoning": "Image 4 provides a clear and direct view of both the giraffe and the tractor. The giraffe's 'collo lungo' (long neck) is prominent, and its position relative to the tractor effectively combines the two elements required by 'Giraffa Trattore'. The composition is strong and directly addresses the theme."
+  },
+  {
+    "model": "openai/o4-mini-high",
+    "idea_name": "Cangurospresso",
+    "video_path": "public/openai_o4-mini-high_Cangurospresso/Cangurospresso_final.mp4",
+    "reasoning": "This concept seamlessly merges a kangaroo with an espresso machine into one playful, memorable mascot. The warm wood-and-steel caf\u00e9 setting enhances the Italian espresso vibe. The kangaroo\u2019s dynamic pose and clean lines make the logo instantly recognizable and versatile across media. Its friendly, energetic character perfectly embodies the \u2018Cangurospresso!\u2019 pun in Italian, promising a fun, quality coffee experience."
   }
 ]
