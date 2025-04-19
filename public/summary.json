@@ -262,5 +262,197 @@
     "idea_name": "Cangurospresso",
     "video_path": "public/openai_o4-mini-high_Cangurospresso/Cangurospresso_final.mp4",
     "reasoning": "This concept seamlessly merges a kangaroo with an espresso machine into one playful, memorable mascot. The warm wood-and-steel caf\u00e9 setting enhances the Italian espresso vibe. The kangaroo\u2019s dynamic pose and clean lines make the logo instantly recognizable and versatile across media. Its friendly, energetic character perfectly embodies the \u2018Cangurospresso!\u2019 pun in Italian, promising a fun, quality coffee experience."
+  },
+  {
+    "model": "openai/gpt-4.1",
+    "idea_name": "Lampadino Gattino",
+    "video_path": "public/openai_gpt-4.1_Lampadino_Gattino/Lampadino_Gattino_final.mp4",
+    "reasoning": "Image 3 best captures the whimsical and charming theme of 'Lampadino Gattino' with the phrase 'miao miao splendido lampadino!'. The kitten is directly under the glowing desk lamp, which forms a visual 'halo' effect around its face, strongly connecting the idea of the kitten and the lamp (lampadino). The lighting emphasizes the kitten's expressive eyes, and the overall composition is warm and magical, fitting the 'splendido' (splendid) tone of the phrase."
+  },
+  {
+    "model": "google/gemini-2.5-flash-preview",
+    "idea_name": "Pizzaiolo Papagallo",
+    "video_path": "public/google_gemini-2.5-flash-preview_Pizzaiolo_Papagallo/Pizzaiolo_Papagallo_final.mp4",
+    "reasoning": "Image 4 is the most expressive and engaging, with the monkey's mouth open as if about to speak or call out. This aligns well with the idea of an Italian voice calling out 'Pizzaiolo Papagallo!'. The other images are more static in their expression."
+  },
+  {
+    "model": "google/gemini-2.5-pro-preview-03-25",
+    "idea_name": "Gattonnone",
+    "video_path": "public/google_gemini-2.5-pro-preview-03-25_Gattonnone/Gattonnone_final.mp4",
+    "reasoning": "Image 5 best represents the concept 'Gatto Cannone! Boom!'. The cat is directly interacting with the cannon, looking down the barrel, and there is smoke emanating from the muzzle, strongly suggesting the 'Boom!' has just occurred or is about to. This image integrates the cat, the cannon, and the action implied by the voiceover most effectively compared to the others."
+  },
+  {
+    "model": "openai/o4-mini-high",
+    "idea_name": "gelatopolpo",
+    "video_path": "public/openai_o4-mini-high_gelatopolpo/gelatopolpo_final.mp4",
+    "reasoning": "This image best captures the playful fusion of an octopus (\u201cpolpo\u201d) and ice cream (\u201cgelato\u201d) by depicting an octopus whose body texture resembles a waffle cone and whose head scoops ice cream; the beach setting and bright colors enhance the \u2018gelatopolpo!\u2019 vibe."
+  },
+  {
+    "model": "openai/gpt-4.1",
+    "idea_name": "Formaggino Polpo",
+    "video_path": "public/openai_gpt-4.1_Formaggino_Polpo/Formaggino_Polpo_final.mp4",
+    "reasoning": "Image 1 best captures the playful, whimsical idea of 'Formaggino Polpo' with its cartoonishly expressive octopus sporting a smiling face that blends cheese-like texture and color. The scattered cheese crumbles and the exaggerated, joyful expression fit perfectly with the Italian phrase 'Mamma mia, che polpo formaggino!' Images 2, 3, and 4 also have anthropomorphic qualities, but Image 1 is more dynamic and eye-catching, while image 5 leans too realistic and lacks the same charm and humor."
+  },
+  {
+    "model": "google/gemini-2.5-flash-preview",
+    "idea_name": "Cobra Cassette",
+    "video_path": "public/google_gemini-2.5-flash-preview_Cobra_Cassette/Cobra_Cassette_final.mp4",
+    "reasoning": "Image 2 best represents a 'Cobra Cassette' by showing the cobra interacting directly with a cassette tape in a clear and unique way, fitting the implied need for a visual representation of the phrase."
+  },
+  {
+    "model": "openai/o4-mini-high",
+    "idea_name": "Spaghettoro",
+    "video_path": "public/openai_o4-mini-high_Spaghettoro/Spaghettoro_final.mp4",
+    "reasoning": "This image best captures the spirit of \u201cSpaghettoro furioso!\u201d by combining the raw fury of a charging bull with the unmistakable form and texture of spaghetti drenched in tomato sauce. The bull\u2019s horns, intense posture, flowing pasta strands, and dripping red sauce all convey motion and anger, matching the furious theme perfectly."
+  },
+  {
+    "model": "google/gemini-2.5-pro-preview-03-25",
+    "idea_name": "Hippocoptero Volante",
+    "video_path": "public/google_gemini-2.5-pro-preview-03-25_Hippocoptero_Volante/Hippocoptero_Volante_final.mp4",
+    "reasoning": "Image 5 is the strongest representation as it clearly depicts the 'Hippocoptero' in flight ('Volante'), hovering just above the ground. The blurred rotor enhances the sense of motion implied by 'Chop chop chop!', whereas the other images show the creature static on the ground."
+  },
+  {
+    "model": "openai/gpt-4.1",
+    "idea_name": "Gelatopo Gatto",
+    "video_path": "public/openai_gpt-4.1_Gelatopo_Gatto/Gelatopo_Gatto_final.mp4",
+    "reasoning": "Image 1 best captures the whimsical concept of 'Gelatopo Gatto,' blending a cat and ice cream in a playful, colorful way. The cat is clearly the main focus, with its fur seamlessly merging with scoops of pastel gelato inside a waffle cone. The addition of sprinkles and playful kittens increases the cuteness, perfectly fitting the Italian exclamation, 'Mamma mia, gelatopo gatto!' The overall expression and vibrant setting make this image feel surprising and joyful, matching the intended mood."
+  },
+  {
+    "model": "google/gemini-2.5-flash-preview",
+    "idea_name": "Tacchino Macchinoso",
+    "video_path": "public/google_gemini-2.5-flash-preview_Tacchino_Macchinoso/Tacchino_Macchinoso_final.mp4",
+    "reasoning": "The first image best captures the essence of a 'machined turkey' with its complex wheeled platform and mechanical appearance, aligning well with the Italian phrase 'Tacchino Macchinoso'."
+  },
+  {
+    "model": "google/gemini-2.5-pro-preview-03-25",
+    "idea_name": "Pizzalo Koalo",
+    "video_path": "public/google_gemini-2.5-pro-preview-03-25_Pizzalo_Koalo/Pizzalo_Koalo_final.mp4",
+    "reasoning": "Image 2 best represents 'Pizzalo Koalo' and the phrase 'Mangia la pizza!'. The koala is prominently holding a large pizza, looking directly at the viewer as if presenting it or about to eat it, which directly aligns with the invitation to 'Eat the pizza!'. The composition is clear and focused on the interaction between the koala and the pizza."
+  },
+  {
+    "model": "openai/o4-mini-high",
+    "idea_name": "pizzadillo",
+    "video_path": "public/openai_o4-mini-high_pizzadillo/pizzadillo_final.mp4",
+    "reasoning": "This image perfectly balances the \u2018pizza\u2019 and \u2018armadillo\u2019 elements by using a pizza crust as the creature\u2019s shell complete with realistic pepperoni, melted cheese and basil, while also showing subtle armadillo-like feet and shell texture. The warm, wood\u2011fired background and vibrant toppings visually convey the Italian \u2018Delizioso!\u2019 spirit, making it the strongest representation of \u2018Pizzadillo.\u2019"
+  },
+  {
+    "model": "openai/gpt-4.1",
+    "idea_name": "Girasole Pinguino",
+    "video_path": "public/openai_gpt-4.1_Girasole_Pinguino/Girasole_Pinguino_final.mp4",
+    "reasoning": "Image 1 is the best fit for 'Girasole Pinguino' with the Italian voice saying 'mamma mia, girasole pinguino!' because it most clearly and charmingly combines the elements of a penguin and a sunflower. The cheerful penguin stands in a vibrant sunflower field, with a large and well-integrated sunflower crown that draws immediate attention and fits the playful, surprising tone of the expression. The bright background and whimsical pose match the lively Italian exclamation."
+  },
+  {
+    "model": "google/gemini-2.5-flash-preview",
+    "idea_name": "Assassino Topogigante",
+    "video_path": "public/google_gemini-2.5-flash-preview_Assassino_Topogigante/Assassino_Topogigante_final.mp4",
+    "reasoning": "Image 1 shows a large rat-like creature with glowing red eyes and sharp teeth, wearing a dark suit that resembles a 'topogigante' or large mouse-like figure. This aligns with the provided Italian phrase 'assassino topogigante!' which translates to 'killer giant mouse!'. The creature is posed aggressively, further suggesting the 'assassino' aspect."
+  },
+  {
+    "model": "openai/o4-mini-high",
+    "idea_name": "Tigrellofono",
+    "video_path": "public/openai_o4-mini-high_Tigrellofono/Tigrellofono_final.mp4",
+    "reasoning": "This image perfectly captures the playful pun \u201cTigrellofono\u201d by showing a tiger interacting with a classic telephone handset. The composition, warm lighting, and clear focus on both tiger and phone make the concept immediately understandable and visually engaging."
+  },
+  {
+    "model": "google/gemini-2.5-pro-preview-03-25",
+    "idea_name": "Tartaruga Tostapane",
+    "video_path": "public/google_gemini-2.5-pro-preview-03-25_Tartaruga_Tostapane/Tartaruga_Tostapane_final.mp4",
+    "reasoning": "Image 3 provides the clearest and most appealing representation of the 'Tartaruga Tostapane' (Turtle Toaster) concept. The toaster serves as the turtle's shell, and the piece of toast popping out directly relates to the 'Caldo!' (Hot!) part of the voiceover. The turtle is depicted actively walking, which could relate to the 'Click clack' sound. Unlike images 1 and 4, it features only one head, making it less visually confusing. Image 2 hides too much of the turtle, and image 5 depicts the turtle and toaster as separate entities."
+  },
+  {
+    "model": "openai/gpt-4.1",
+    "idea_name": "Gattofonino",
+    "video_path": "public/openai_gpt-4.1_Gattofonino/Gattofonino_final.mp4",
+    "reasoning": "Image 4 is the best representation for 'Gattofonino' with the playful Italian voice 'prrrring prrrring gattofonino arrivato!'. The cat has an expressive, cheerful face that matches the whimsical sound effect, and the integration of the phone and cat is seamless and imaginative. The setting with lots of phones and a bit of playful chaos gives a humorous and friendly vibe, making it feel like the silly arrival of a special device, just as the phrase suggests."
+  },
+  {
+    "model": "google/gemini-2.5-flash-preview",
+    "idea_name": "Panda Panino",
+    "video_path": "public/google_gemini-2.5-flash-preview_Panda_Panino/Panda_Panino_final.mp4",
+    "reasoning": "Image 1 has the most appealing composition, centering the panda surrounded by a delicious spread of Italian meats and cheeses, which aligns best with 'Panda Panino,' implying a focus on the Italian food element. The lighting and focus on the food also feel more inviting than the other images. The panda's expression appears content and ready to enjoy its 'panino' picnic."
+  },
+  {
+    "model": "openai/o4-mini-high",
+    "idea_name": "lampadillo",
+    "video_path": "public/openai_o4-mini-high_lampadillo/lampadillo_final.mp4",
+    "reasoning": "This image seamlessly blends an armadillo\u2019s armored form with a lamp-like structure on its back, capturing the playful portmanteau \u201clampadillo.\u201d The warm lighting, detailed textures, and clear lamp element make it the most striking and immediately recognizable of the five."
+  },
+  {
+    "model": "google/gemini-2.5-pro-preview-03-25",
+    "idea_name": "Pinguinofono",
+    "video_path": "public/google_gemini-2.5-pro-preview-03-25_Pinguinofono/Pinguinofono_final.mp4",
+    "reasoning": "Image 3 is chosen because the dangling, free-hanging telephone cord effectively evokes the sound and action of 'Squilla squilla!' (Ring ring!). The full shot of the penguin clearly depicts the 'Pinguino' element, making the 'Pinguinofono' concept visually strong and connected to the audio cue."
+  },
+  {
+    "model": "openai/gpt-4.1",
+    "idea_name": "Maccarona Farfallupo",
+    "video_path": "public/openai_gpt-4.1_Maccarona_Farfallupo/Maccarona_Farfallupo_final.mp4",
+    "reasoning": "Image 3 has the strongest connection to the theme 'Maccarona Farfallupo' and the phrase 'Mamma mia, farfallupo veloce!'. The wolf is clearly featured with multiple pieces of farfalle pasta (bow-tie pasta) on its body and around it, with parmesan sprinkled, which combines the wordplay of 'farfalle' (the pasta) and 'lupo' (wolf). The wolf's posture appears alert and quick, matching 'veloce' (fast), and the kitchen background amplifies the Italian culinary vibe. The overall composition is whimsical and energetic, fulfilling both the visual pun and the energetic exclamation of the phrase."
+  },
+  {
+    "model": "google/gemini-2.5-flash-preview",
+    "idea_name": "Pandelino Ursido",
+    "video_path": "public/google_gemini-2.5-flash-preview_Pandelino_Ursido/Pandelino_Ursido_final.mp4",
+    "reasoning": "Image 3 has a full-sized baguette that closely resembles the syllable structure of the word 'Pandelino', making it the most visually suitable option for representing an Italian voice saying 'Pandelino Ursido!'"
+  },
+  {
+    "model": "google/gemini-2.5-pro-preview-03-25",
+    "idea_name": "Martello Pinguino",
+    "video_path": "public/google_gemini-2.5-pro-preview-03-25_Martello_Pinguino/Martello_Pinguino_final.mp4",
+    "reasoning": "The audio 'Batti batti, pinguino!' suggests an action of hitting or hammering. Image 4 best depicts the penguin potentially performing this action, holding the hammer across its body in a dynamic pose that implies movement or readiness to strike, which aligns well with the audio cue."
+  },
+  {
+    "model": "openai/o4-mini-high",
+    "idea_name": "Ricciocarro",
+    "video_path": "public/openai_o4-mini-high_Ricciocarro/Ricciocarro_final.mp4",
+    "reasoning": "This image most effectively captures the playful spirit of \u201cRicciocarro\u201d by combining a compact Italian city car (a nod to the \u201ccarro\u201d part) with subtle hedgehog\u2010inspired wheel detailing that evokes \u201criccio.\u201d The warm Italian piazza backdrop and authentic styling reinforce the Italian heritage of the concept, making it instantly recognizable and memorable."
+  },
+  {
+    "model": "openai/gpt-4.1",
+    "idea_name": "Formaggino Scoiattolo",
+    "video_path": "public/openai_gpt-4.1_Formaggino_Scoiattolo/Formaggino_Scoiattolo_final.mp4",
+    "reasoning": "Image 1 stands out as the best representation for 'Formaggino Scoiattolo.' The squirrel is holding a small piece of cheese, is surrounded by a large cheese wedge, and is wearing a chef's hat, which reinforces the playful Italian culinary theme. The background includes bread and grapes, evoking a traditional Italian kitchen. The squirrel's joyful, expressive face perfectly matches the excitement and delight in the phrase 'mamma mia, formaggino scoiattolo!' and communicates a whimsical and appetizing atmosphere. The composition is balanced and visually appealing, making it ideal for the context."
+  },
+  {
+    "model": "google/gemini-2.5-flash-preview",
+    "idea_name": "Sharko Sneaky",
+    "video_path": "public/google_gemini-2.5-flash-preview_Sharko_Sneaky/Sharko_Sneaky_final.mp4",
+    "reasoning": "Image 3 provides a clear, head-on shot of the shark, making it the most prominent and visually striking. It also features seashells in the foreground which adds to the beach atmosphere."
+  },
+  {
+    "model": "google/gemini-2.5-pro-preview-03-25",
+    "idea_name": "Capibara Tostapane",
+    "video_path": "public/google_gemini-2.5-pro-preview-03-25_Capibara_Tostapane/Capibara_Tostapane_final.mp4",
+    "reasoning": "Image 4 is the most compelling as it directly depicts the capybara inside the toaster slots, playfully peeking out. This composition strongly evokes the 'toasting' concept implied by 'Capibara Tostapane' and the phrase 'Tosta Tosta Capibara!', making it the most relevant and humorous choice among the options."
+  },
+  {
+    "model": "openai/o4-mini-high",
+    "idea_name": "Martellupo",
+    "video_path": "public/openai_o4-mini-high_Martellupo/Martellupo_final.mp4",
+    "reasoning": "This image captures the essence of \u201cMartellupo\u201d perfectly: the armored wolf design blends strength and mythic presence, the snarling pose conveys dynamic energy, and the sparks at its paw emphasize action. Together these elements evoke the dramatic flair you\u2019d expect when an Italian voice bellows \u201cMartellupo!\u201d"
+  },
+  {
+    "model": "openai/gpt-4.1",
+    "idea_name": "Gelatopinguino",
+    "video_path": "public/openai_gpt-4.1_Gelatopinguino/Gelatopinguino_final.mp4",
+    "reasoning": "Image 1 best captures the spirit of 'Gelatopinguino' with its cute, expressive penguin face, bright gelato-colors, and whimsical cherry on top. The beach setting and the penguin holding a spoon make the scene joyful and lively, matching the playful Italian exclamation 'Mamma mia, gelatopinguino!' The composition is clear and memorable, with the penguin centered and no distractions, enhancing the overall impact."
+  },
+  {
+    "model": "google/gemini-2.5-flash-preview",
+    "idea_name": "Scavengero Spaghettini",
+    "video_path": "public/google_gemini-2.5-flash-preview_Scavengero_Spaghettini/Scavengero_Spaghettini_final.mp4",
+    "reasoning": "The first image features a character whose body is prominently made of spaghetti. The pose and expression provide a comical and engaging visual that seems to fit with the playful nature of the name and presumed voice line."
+  },
+  {
+    "model": "google/gemini-2.5-pro-preview-03-25",
+    "idea_name": "Polpotronco",
+    "video_path": "public/google_gemini-2.5-pro-preview-03-25_Polpotronco/Polpotronco_final.mp4",
+    "reasoning": "Image 1 provides the clearest and most aesthetically pleasing depiction of the 'Polpotronco'. The octopus is well-defined, centrally placed against the tree trunk, and lacks the visual distortions or awkward eye placements seen in some of the other images. The lighting and focus effectively highlight the subject within the forest setting."
+  },
+  {
+    "model": "openai/o4-mini-high",
+    "idea_name": "lumacaffettiera",
+    "video_path": "public/openai_o4-mini-high_lumacaffettiera/lumacaffettiera_final.mp4",
+    "reasoning": "This image seamlessly blends a snail (\u201clumaca\u201d) with an espresso machine (\u201ccaffettiera\u201d), capturing both the literal fusion of forms and the playful spirit of the Italian pun \u201clumacaffettiera.\u201d The polished metal, glistening shell, and dripping espresso all make it visually striking and conceptually perfect."
   }
 ]
