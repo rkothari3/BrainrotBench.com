@@ -1,73 +1,85 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { createContext, useContext, useState, useEffect } from "react"
-import { type Model, initialModels, selectRandomModels } from "@/lib/models"
-import { updateEloRatings } from "@/lib/elo"
-import { fetchModels, updateModelsAfterVote as updateModelsInDb } from "@/app/actions"
-import { getSupabaseClient } from "@/lib/supabase"
+import type React from "react";
+import { createContext, useContext, useState, useEffect } from "react";
+import { type Model, initialModels, selectRandomModels } from "@/lib/models";
+import { updateEloRatings } from "@/lib/elo";
+import {
+  fetchModels,
+  updateModelsAfterVote as updateModelsInDb,
+} from "@/app/actions";
+import { getSupabaseClient } from "@/lib/supabase";
+import { loadBrainrotModels } from "@/lib/brainrot";
 
 // Defines the shape of data and functions our context will provide
 interface ModelsContextType {
-  models: Model[] // List of all models
-  selectedModelA: Model | null // First model being compared
-  selectedModelB: Model | null // Second model being compared
-  selectNewModels: () => void // Function to pick new models to compare
-  updateModelsAfterVote: (choice: "A" | "B" | "TIE") => void // Function to handle voting
-  loading: boolean // Whether models are loading
-  error: string | null // Error message if any
+  models: Model[]; // List of all models
+  selectedModelA: Model | null; // First model being compared
+  selectedModelB: Model | null; // Second model being compared
+  selectNewModels: () => void; // Function to pick new models to compare
+  updateModelsAfterVote: (choice: "A" | "B" | "TIE") => void; // Function to handle voting
+  loading: boolean; // Whether models are loading
+  error: string | null; // Error message if any
 }
 
 // Creates the context with undefined default value
-const ModelsContext = createContext<ModelsContextType | undefined>(undefined)
+const ModelsContext = createContext<ModelsContextType | undefined>(undefined);
 
 // The provider component that will wrap parts of our app that need this data
 export function ModelsProvider({ children }: { children: React.ReactNode }) {
   // State to store all models and the currently selected pair
-  const [models, setModels] = useState<Model[]>([])
-  const [selectedModelA, setSelectedModelA] = useState<Model | null>(null)
-  const [selectedModelB, setSelectedModelB] = useState<Model | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const [models, setModels] = useState<Model[]>([]);
+  const [selectedModelA, setSelectedModelA] = useState<Model | null>(null);
+  const [selectedModelB, setSelectedModelB] = useState<Model | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  // On first load, fetch models from Supabase
+  // On first load, fetch models from Supabase with fallback to summary.json
   useEffect(() => {
     const loadModels = async () => {
       try {
-        setLoading(true)
-        setError(null)
-        const fetchedModels = await fetchModels()
-
-        if (fetchedModels.length === 0) {
-          // If no models were fetched, use initial models
-          setModels(initialModels)
-          const [modelA, modelB] = selectRandomModels([...initialModels])
-          setSelectedModelA(modelA)
-          setSelectedModelB(modelB)
+        setLoading(true);
+        setError(null);
+        
+        // Try to load models from Supabase first
+        console.log("Attempting to load models from Supabase...");
+        const supabaseModels = await fetchModels();
+        
+        // If Supabase has models, use them
+        if (supabaseModels.length > 0) {
+          console.log("Loaded models from Supabase:", supabaseModels);
+          setModels(supabaseModels);
+          const [modelA, modelB] = selectRandomModels([...supabaseModels]);
+          setSelectedModelA(modelA);
+          setSelectedModelB(modelB);
         } else {
-          setModels(fetchedModels)
-          // Select initial models for comparison
-          const [modelA, modelB] = selectRandomModels([...fetchedModels])
-          setSelectedModelA(modelA)
-          setSelectedModelB(modelB)
+          // Fallback to summary.json if no models in Supabase
+          console.log("No models in Supabase, loading from summary.json...");
+          const brainrotModels = await loadBrainrotModels();
+          
+          if (brainrotModels.length > 0) {
+            console.log("Loaded models from summary.json:", brainrotModels);
+            setModels(brainrotModels);
+            const [modelA, modelB] = selectRandomModels([...brainrotModels]);
+            setSelectedModelA(modelA);
+            setSelectedModelB(modelB);
+          } else {
+            console.error("No models found in Supabase or summary.json");
+            setError("No models found");
+          }
         }
       } catch (error) {
-        console.error("Failed to load models:", error)
-        setError("Failed to load models. Using local data instead.")
-        // Fallback to initial models if fetch fails
-        setModels(initialModels)
-        const [modelA, modelB] = selectRandomModels([...initialModels])
-        setSelectedModelA(modelA)
-        setSelectedModelB(modelB)
+        console.error("Failed to load models:", error);
+        setError("Failed to load models");
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
+    };
 
-    loadModels()
+    loadModels();
 
     // Set up real-time subscription for model updates
-    const supabase = getSupabaseClient()
+    const supabase = getSupabaseClient();
     if (supabase) {
       try {
         const subscription = supabase
@@ -82,60 +94,60 @@ export function ModelsProvider({ children }: { children: React.ReactNode }) {
             async (payload) => {
               try {
                 // Refresh models when changes occur
-                const refreshedModels = await fetchModels()
+                const refreshedModels = await fetchModels();
                 if (refreshedModels.length > 0) {
-                  setModels(refreshedModels)
+                  setModels(refreshedModels);
                 }
               } catch (error) {
-                console.error("Error refreshing models:", error)
+                console.error("Error refreshing models:", error);
               }
             },
           )
           .subscribe((status) => {
             if (status === "CLOSED") {
-              console.log("Supabase subscription closed")
+              console.log("Supabase subscription closed");
             }
             if (status === "CHANNEL_ERROR") {
-              console.error("Supabase subscription error")
+              console.error("Supabase subscription error");
             }
-          })
+          });
 
         return () => {
           try {
-            supabase.removeChannel(subscription)
+            supabase.removeChannel(subscription);
           } catch (error) {
-            console.error("Error removing Supabase channel:", error)
+            console.error("Error removing Supabase channel:", error);
           }
-        }
+        };
       } catch (error) {
-        console.error("Error setting up Supabase subscription:", error)
+        console.error("Error setting up Supabase subscription:", error);
       }
     }
-  }, [])
+  }, []);
 
   // Helper function to select two random models for comparison
   const selectNewModelsInternal = () => {
-    if (models.length < 2) return
+    if (models.length < 2) return;
 
-    const [modelA, modelB] = selectRandomModels([...models])
-    setSelectedModelA(modelA)
-    setSelectedModelB(modelB)
-  }
+    const [modelA, modelB] = selectRandomModels([...models]);
+    setSelectedModelA(modelA);
+    setSelectedModelB(modelB);
+  };
 
   // Function to handle user votes and update model ratings
   const updateModelsAfterVote = async (choice: "A" | "B" | "TIE") => {
-    if (!selectedModelA || !selectedModelB) return
+    if (!selectedModelA || !selectedModelB) return;
 
     // Determine scores based on user's choice
-    let scoreA = 0.5 // Default for tie
-    let scoreB = 0.5 // Default for tie
+    let scoreA = 0.5; // Default for tie
+    let scoreB = 0.5; // Default for tie
 
     if (choice === "A") {
-      scoreA = 1 // Model A wins
-      scoreB = 0 // Model B loses
+      scoreA = 1; // Model A wins
+      scoreB = 0; // Model B loses
     } else if (choice === "B") {
-      scoreA = 0 // Model A loses
-      scoreB = 1 // Model B wins
+      scoreA = 0; // Model A loses
+      scoreB = 1; // Model B wins
     }
 
     // Calculate new ELO ratings based on the outcome
@@ -144,7 +156,7 @@ export function ModelsProvider({ children }: { children: React.ReactNode }) {
       selectedModelB.eloRating,
       scoreA,
       scoreB,
-    )
+    );
 
     try {
       // Update local state optimistically
@@ -158,7 +170,7 @@ export function ModelsProvider({ children }: { children: React.ReactNode }) {
               losses: model.losses + (choice === "B" ? 1 : 0),
               ties: model.ties + (choice === "TIE" ? 1 : 0),
               totalVotes: model.totalVotes + 1,
-            }
+            };
           }
           if (model.id === selectedModelB.id) {
             return {
@@ -168,28 +180,36 @@ export function ModelsProvider({ children }: { children: React.ReactNode }) {
               losses: model.losses + (choice === "A" ? 1 : 0),
               ties: model.ties + (choice === "TIE" ? 1 : 0),
               totalVotes: model.totalVotes + 1,
-            }
+            };
           }
-          return model
-        })
-      })
+          return model;
+        });
+      });
 
-      // Update models in the database
-      const success = await updateModelsInDb(selectedModelA.id, selectedModelB.id, newRatingA, newRatingB, choice)
+      // Update models in Supabase database
+      const success = await updateModelsInDb(
+        selectedModelA.id,
+        selectedModelB.id,
+        newRatingA,
+        newRatingB,
+        choice,
+      );
 
       if (!success) {
-        console.error("Failed to update models in database, but local state was updated")
+        console.error(
+          "Failed to update models in Supabase, but local state was updated"
+        );
       }
     } catch (error) {
-      console.error("Failed to update models:", error)
-      setError("Failed to update vote. Please try again.")
+      console.error("Failed to update models:", error);
+      setError("Failed to update vote. Please try again.");
     }
-  }
+  };
 
   // Public function to select new models for comparison
   const selectNewModels = () => {
-    selectNewModelsInternal()
-  }
+    selectNewModelsInternal();
+  };
 
   // Provide the context values to all children components
   return (
@@ -206,14 +226,14 @@ export function ModelsProvider({ children }: { children: React.ReactNode }) {
     >
       {children}
     </ModelsContext.Provider>
-  )
+  );
 }
 
 // Custom hook to easily access this context from any component
 export function useModels() {
-  const context = useContext(ModelsContext)
+  const context = useContext(ModelsContext);
   if (context === undefined) {
-    throw new Error("useModels must be used within a ModelsProvider")
+    throw new Error("useModels must be used within a ModelsProvider");
   }
-  return context
+  return context;
 }

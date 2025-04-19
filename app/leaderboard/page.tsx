@@ -1,30 +1,47 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { useModels } from "@/contexts/models-context"
-import { calculateWinRate } from "@/lib/models"
-import { Loader2, AlertCircle } from "lucide-react"
-import { Alert, AlertDescription } from "@/components/ui/alert"
+import Link from "next/link";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { useModels } from "@/contexts/models-context";
+import { calculateWinRate } from "@/lib/models";
+import { Loader2, AlertCircle } from "lucide-react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 export default function Leaderboard() {
-  const { models, loading, error } = useModels()
+  const { models, loading, error } = useModels();
 
   // Sort models by ELO rating (highest first)
-  const sortedModels = [...models].sort((a, b) => b.eloRating - a.eloRating)
+  const sortedModels = [...models].sort((a, b) => b.eloRating - a.eloRating);
 
   return (
     <main className="flex min-h-screen flex-col items-center">
       <header className="w-full border-b">
         <div className="container flex h-16 items-center justify-between">
           <nav className="flex items-center gap-6 text-sm">
-            <Link href="/" className="font-medium transition-colors hover:text-primary">
+            <Link
+              href="/"
+              className="font-medium transition-colors hover:text-primary"
+            >
               Voting
             </Link>
-            <Link href="/leaderboard" className="font-medium transition-colors hover:text-primary">
+            <Link
+              href="/leaderboard"
+              className="font-medium transition-colors hover:text-primary"
+            >
               Leaderboard
             </Link>
-            <Link href="/about" className="font-medium transition-colors hover:text-primary">
+            <Link
+              href="/about"
+              className="font-medium transition-colors hover:text-primary"
+            >
               About
             </Link>
           </nav>
@@ -32,7 +49,9 @@ export default function Leaderboard() {
       </header>
 
       <div className="container py-10">
-        <h1 className="text-4xl font-bold tracking-tight mb-2 text-center">BRAINROT BENCH</h1>
+        <h1 className="text-4xl font-bold tracking-tight mb-2 text-center">
+          BRAINROT BENCH
+        </h1>
         <h2 className="text-2xl font-semibold mb-6 text-center">Leaderboard</h2>
 
         {error && (
@@ -67,12 +86,18 @@ export default function Leaderboard() {
                 <TableRow key={model.id}>
                   <TableCell className="font-medium">{index + 1}</TableCell>
                   <TableCell>{model.name}</TableCell>
-                  <TableCell className="text-right">{model.eloRating}</TableCell>
-                  <TableCell className="text-right">{calculateWinRate(model).toFixed(1)}%</TableCell>
+                  <TableCell className="text-right">
+                    {model.eloRating}
+                  </TableCell>
+                  <TableCell className="text-right">
+                    {calculateWinRate(model).toFixed(1)}%
+                  </TableCell>
                   <TableCell className="text-right">{model.wins}</TableCell>
                   <TableCell className="text-right">{model.losses}</TableCell>
                   <TableCell className="text-right">{model.ties}</TableCell>
-                  <TableCell className="text-right">{model.totalVotes}</TableCell>
+                  <TableCell className="text-right">
+                    {model.totalVotes}
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -80,5 +105,5 @@ export default function Leaderboard() {
         )}
       </div>
     </main>
-  )
+  );
 }

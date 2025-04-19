@@ -1,15 +1,15 @@
-"use client"
-import { motion } from "framer-motion"
+"use client";
+import { motion } from "framer-motion";
 
 interface CollageItem {
-  id: number
-  src: string
-  initialX: number
-  initialY: number
-  size: number
-  rotation: number
-  speed: number
-  direction: number
+  id: number;
+  src: string;
+  initialX: number;
+  initialY: number;
+  size: number;
+  rotation: number;
+  speed: number;
+  direction: number;
 }
 
 export default function AnimatedBackground() {
@@ -45,7 +45,7 @@ export default function AnimatedBackground() {
       speed: 0.4 + Math.random() * 0.5,
       direction: Math.random() > 0.5 ? 1 : -1,
     },
-  ]
+  ];
 
   return (
     <div className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
@@ -67,7 +67,11 @@ export default function AnimatedBackground() {
           animate={{
             x: [0, item.direction * 100, 0],
             y: [0, item.direction * -50, 0],
-            rotate: [item.rotation, item.rotation + item.direction * 10, item.rotation],
+            rotate: [
+              item.rotation,
+              item.rotation + item.direction * 10,
+              item.rotation,
+            ],
           }}
           transition={{
             duration: 20 / item.speed,
@@ -75,9 +79,13 @@ export default function AnimatedBackground() {
             ease: "linear",
           }}
         >
-          <img src={item.src || "/placeholder.svg"} alt="" className="w-full h-full object-cover" />
+          <img
+            src={item.src || "/placeholder.svg"}
+            alt=""
+            className="w-full h-full object-cover"
+          />
         </motion.div>
       ))}
     </div>
-  )
+  );
 }

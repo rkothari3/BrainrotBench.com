@@ -1,14 +1,22 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import { Loader2, Maximize2, Volume2, VolumeX, AlertCircle } from "lucide-react"
-import { useModels } from "@/contexts/models-context"
-import { Alert, AlertDescription } from "@/components/ui/alert"
+import { useState, useEffect, useRef } from "react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import {
+  Loader2,
+  Maximize2,
+  Volume2,
+  VolumeX,
+  AlertCircle,
+  Play,
+  Pause,
+} from "lucide-react";
+import { useModels } from "@/contexts/models-context";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 interface ComparisonViewProps {
-  initialPrompt?: string
+  initialPrompt?: string;
 }
 
 export default function ComparisonView({ initialPrompt }: ComparisonViewProps) {
@@ -19,52 +27,101 @@ export default function ComparisonView({ initialPrompt }: ComparisonViewProps) {
     selectNewModels,
     loading: modelsLoading,
     error,
-  } = useModels()
-  const [contentLoading, setContentLoading] = useState(true)
-  const [voted, setVoted] = useState(false)
-  const [audioPlayingA, setAudioPlayingA] = useState(false)
-  const [audioPlayingB, setAudioPlayingB] = useState(false)
+  } = useModels();
+  const [contentLoading, setContentLoading] = useState(true);
+  const [voted, setVoted] = useState(false);
+  const [audioPlayingA, setAudioPlayingA] = useState(false);
+  const [audioPlayingB, setAudioPlayingB] = useState(false);
+  const [isPlayingA, setIsPlayingA] = useState(false);
+  const [isPlayingB, setIsPlayingB] = useState(false);
+  const videoRefA = useRef<HTMLVideoElement>(null);
+  const videoRefB = useRef<HTMLVideoElement>(null);
 
-  // Simulate loading content
+  // Simulate loading content and log paths
   useEffect(() => {
     if (!modelsLoading && selectedModelA && selectedModelB) {
-      const timer = setTimeout(() => {
-        setContentLoading(false)
-      }, 2000)
+      console.log("Model A video path:", selectedModelA.videoPath);
+      console.log("Model B video path:", selectedModelB.videoPath);
 
-      return () => clearTimeout(timer)
+      const timer = setTimeout(() => {
+        setContentLoading(false);
+      }, 2000);
+
+      return () => clearTimeout(timer);
     }
-  }, [selectedModelA, selectedModelB, modelsLoading])
+  }, [selectedModelA, selectedModelB, modelsLoading]);
 
   const handleVote = (choice: "A" | "B" | "TIE") => {
-    setVoted(true)
+    setVoted(true);
 
     // Update models with the vote result
-    updateModelsAfterVote(choice)
+    updateModelsAfterVote(choice);
 
     // Here you would typically send the vote to your backend
-    console.log(`Voted for ${choice}`)
-  }
+    console.log(`Voted for ${choice}`);
+  };
 
   const handleNextComparison = () => {
-    setContentLoading(true)
-    setVoted(false)
+    setContentLoading(true);
+    setVoted(false);
 
     // Select new models for comparison
-    selectNewModels()
-  }
+    selectNewModels();
+  };
 
   const toggleAudioA = () => {
-    setAudioPlayingA(!audioPlayingA)
-    if (audioPlayingB) setAudioPlayingB(false)
-  }
+    const newAudioState = !audioPlayingA;
+    setAudioPlayingA(newAudioState);
+    if (audioPlayingB) setAudioPlayingB(false);
+
+    if (videoRefA.current) {
+      videoRefA.current.muted = !newAudioState;
+      if (newAudioState && !isPlayingA) {
+        // If enabling audio and video isn't playing, start playing
+        videoRefA.current.play();
+        setIsPlayingA(true);
+      }
+    }
+  };
 
   const toggleAudioB = () => {
-    setAudioPlayingB(!audioPlayingB)
-    if (audioPlayingA) setAudioPlayingA(false)
-  }
+    const newAudioState = !audioPlayingB;
+    setAudioPlayingB(newAudioState);
+    if (audioPlayingA) setAudioPlayingA(false);
 
-  const loading = modelsLoading || contentLoading
+    if (videoRefB.current) {
+      videoRefB.current.muted = !newAudioState;
+      if (newAudioState && !isPlayingB) {
+        // If enabling audio and video isn't playing, start playing
+        videoRefB.current.play();
+        setIsPlayingB(true);
+      }
+    }
+  };
+
+  const togglePlayA = () => {
+    if (videoRefA.current) {
+      if (isPlayingA) {
+        videoRefA.current.pause();
+      } else {
+        videoRefA.current.play();
+      }
+      setIsPlayingA(!isPlayingA);
+    }
+  };
+
+  const togglePlayB = () => {
+    if (videoRefB.current) {
+      if (isPlayingB) {
+        videoRefB.current.pause();
+      } else {
+        videoRefB.current.play();
+      }
+      setIsPlayingB(!isPlayingB);
+    }
+  };
+
+  const loading = modelsLoading || contentLoading;
 
   if (modelsLoading || !selectedModelA || !selectedModelB) {
     return (
@@ -72,7 +129,7 @@ export default function ComparisonView({ initialPrompt }: ComparisonViewProps) {
         <Loader2 className="h-10 w-10 animate-spin mb-4" />
         <p className="text-muted-foreground">Loading models...</p>
       </div>
-    )
+    );
   }
 
   return (
@@ -90,20 +147,42 @@ export default function ComparisonView({ initialPrompt }: ComparisonViewProps) {
           {loading ? (
             <div className="flex flex-col items-center justify-center h-full">
               <Loader2 className="h-10 w-10 animate-spin mb-2" />
-              <p className="text-sm text-muted-foreground">Loading model A...</p>
+              <p className="text-sm text-muted-foreground">
+                Loading model A...
+              </p>
             </div>
           ) : (
             <>
               <div className="absolute top-2 right-2 flex gap-2">
-                <Button variant="ghost" size="icon" onClick={toggleAudioA} className="bg-black/50 hover:bg-black/70">
-                  {audioPlayingA ? <Volume2 className="h-5 w-5" /> : <VolumeX className="h-5 w-5" />}
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={toggleAudioA}
+                  className="bg-black/50 hover:bg-black/70"
+                >
+                  {audioPlayingA ? (
+                    <Volume2 className="h-5 w-5" />
+                  ) : (
+                    <VolumeX className="h-5 w-5" />
+                  )}
                 </Button>
-                <Button variant="ghost" size="icon" className="bg-black/50 hover:bg-black/70">
-                  <Maximize2 className="h-5 w-5" />
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={togglePlayA}
+                  className="bg-black/50 hover:bg-black/70"
+                >
+                  {isPlayingA ? (
+                    <Pause className="h-5 w-5" />
+                  ) : (
+                    <Play className="h-5 w-5" />
+                  )}
                 </Button>
               </div>
               <div className="absolute bottom-2 left-2">
-                <span className="bg-black/70 text-white px-2 py-1 rounded text-sm">A</span>
+                <span className="bg-black/70 text-white px-2 py-1 rounded text-sm">
+                  A
+                </span>
               </div>
               {voted && (
                 <div className="absolute bottom-2 right-2">
@@ -112,11 +191,29 @@ export default function ComparisonView({ initialPrompt }: ComparisonViewProps) {
                   </span>
                 </div>
               )}
-              <img
-                src="/placeholder.svg?height=300&width=400"
-                alt="AI Generated Content A"
+              <video
+                ref={videoRefA}
+                src={selectedModelA.videoPath}
+                controls
+                muted={!audioPlayingA}
+                preload="auto"
+                loop
                 className="w-full h-full object-cover"
+                onClick={togglePlayA}
+                onLoadedData={() => console.log("Video A loaded")}
+                onError={(e) => console.error("Video A error:", e)}
               />
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                {!isPlayingA && (
+                  <Button
+                    className="rounded-full bg-black/70 hover:bg-black/50 pointer-events-auto"
+                    size="icon"
+                    onClick={togglePlayA}
+                  >
+                    <Play className="h-6 w-6" />
+                  </Button>
+                )}
+              </div>
             </>
           )}
         </Card>
@@ -126,20 +223,42 @@ export default function ComparisonView({ initialPrompt }: ComparisonViewProps) {
           {loading ? (
             <div className="flex flex-col items-center justify-center h-full">
               <Loader2 className="h-10 w-10 animate-spin mb-2" />
-              <p className="text-sm text-muted-foreground">Loading model B...</p>
+              <p className="text-sm text-muted-foreground">
+                Loading model B...
+              </p>
             </div>
           ) : (
             <>
               <div className="absolute top-2 right-2 flex gap-2">
-                <Button variant="ghost" size="icon" onClick={toggleAudioB} className="bg-black/50 hover:bg-black/70">
-                  {audioPlayingB ? <Volume2 className="h-5 w-5" /> : <VolumeX className="h-5 w-5" />}
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={toggleAudioB}
+                  className="bg-black/50 hover:bg-black/70"
+                >
+                  {audioPlayingB ? (
+                    <Volume2 className="h-5 w-5" />
+                  ) : (
+                    <VolumeX className="h-5 w-5" />
+                  )}
                 </Button>
-                <Button variant="ghost" size="icon" className="bg-black/50 hover:bg-black/70">
-                  <Maximize2 className="h-5 w-5" />
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={togglePlayB}
+                  className="bg-black/50 hover:bg-black/70"
+                >
+                  {isPlayingB ? (
+                    <Pause className="h-5 w-5" />
+                  ) : (
+                    <Play className="h-5 w-5" />
+                  )}
                 </Button>
               </div>
               <div className="absolute bottom-2 left-2">
-                <span className="bg-black/70 text-white px-2 py-1 rounded text-sm">B</span>
+                <span className="bg-black/70 text-white px-2 py-1 rounded text-sm">
+                  B
+                </span>
               </div>
               {voted && (
                 <div className="absolute bottom-2 right-2">
@@ -148,11 +267,29 @@ export default function ComparisonView({ initialPrompt }: ComparisonViewProps) {
                   </span>
                 </div>
               )}
-              <img
-                src="/placeholder.svg?height=300&width=400"
-                alt="AI Generated Content B"
+              <video
+                ref={videoRefB}
+                src={selectedModelB.videoPath}
+                controls
+                muted={!audioPlayingB}
+                preload="auto"
+                loop
                 className="w-full h-full object-cover"
+                onClick={togglePlayB}
+                onLoadedData={() => console.log("Video B loaded")}
+                onError={(e) => console.error("Video B error:", e)}
               />
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                {!isPlayingB && (
+                  <Button
+                    className="rounded-full bg-black/70 hover:bg-black/50 pointer-events-auto"
+                    size="icon"
+                    onClick={togglePlayB}
+                  >
+                    <Play className="h-6 w-6" />
+                  </Button>
+                )}
+              </div>
             </>
           )}
         </Card>
@@ -190,11 +327,14 @@ export default function ComparisonView({ initialPrompt }: ComparisonViewProps) {
 
       {voted && (
         <div className="mt-6 text-center">
-          <Button onClick={handleNextComparison} className="px-8 bg-green-600 hover:bg-green-700">
+          <Button
+            onClick={handleNextComparison}
+            className="px-8 bg-green-600 hover:bg-green-700"
+          >
             Next Comparison
           </Button>
         </div>
       )}
     </div>
-  )
+  );
 }

@@ -1,16 +1,3 @@
-# Python-generated files
-__pycache__/
-*.py[oc]
-build/
-dist/
-wheels/
-*.egg-info
-
-# Virtual environments
-.venv
-
-.env
-output/
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -44,4 +31,4 @@ public/**/*.jpg
 public/**/*.txt
 public/**/*.json
 public/**/*.mp3
-!public/summary.json
+!public/summary.json 

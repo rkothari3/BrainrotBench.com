@@ -7,7 +7,7 @@
 
 // K-factor determines how much ratings change after each match
 // Higher K means more volatile ratings
-const K_FACTOR = 32
+const K_FACTOR = 32;
 
 /**
  * Calculate the expected score (win probability) for a player
@@ -15,8 +15,11 @@ const K_FACTOR = 32
  * @param ratingB - Rating of player B
  * @returns Expected score for player A (between 0 and 1)
  */
-export function calculateExpectedScore(ratingA: number, ratingB: number): number {
-  return 1 / (1 + Math.pow(10, (ratingB - ratingA) / 400))
+export function calculateExpectedScore(
+  ratingA: number,
+  ratingB: number,
+): number {
+  return 1 / (1 + Math.pow(10, (ratingB - ratingA) / 400));
 }
 
 /**
@@ -26,8 +29,12 @@ export function calculateExpectedScore(ratingA: number, ratingB: number): number
  * @param actualScore - Actual score (1 for win, 0.5 for draw, 0 for loss)
  * @returns New rating
  */
-export function calculateNewRating(currentRating: number, expectedScore: number, actualScore: number): number {
-  return currentRating + K_FACTOR * (actualScore - expectedScore)
+export function calculateNewRating(
+  currentRating: number,
+  expectedScore: number,
+  actualScore: number,
+): number {
+  return currentRating + K_FACTOR * (actualScore - expectedScore);
 }
 
 /**
@@ -44,11 +51,11 @@ export function updateEloRatings(
   scoreA: number,
   scoreB: number,
 ): { newRatingA: number; newRatingB: number } {
-  const expectedScoreA = calculateExpectedScore(ratingA, ratingB)
-  const expectedScoreB = calculateExpectedScore(ratingB, ratingA)
+  const expectedScoreA = calculateExpectedScore(ratingA, ratingB);
+  const expectedScoreB = calculateExpectedScore(ratingB, ratingA);
 
-  const newRatingA = calculateNewRating(ratingA, expectedScoreA, scoreA)
-  const newRatingB = calculateNewRating(ratingB, expectedScoreB, scoreB)
+  const newRatingA = calculateNewRating(ratingA, expectedScoreA, scoreA);
+  const newRatingB = calculateNewRating(ratingB, expectedScoreB, scoreB);
 
-  return { newRatingA, newRatingB }
+  return { newRatingA, newRatingB };
 }

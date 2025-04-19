@@ -1,21 +1,24 @@
-"use server"
+"use server";
 
-import { createSupabaseServer } from "@/lib/supabase"
-import type { Model } from "@/lib/models"
+import { createSupabaseServer } from "@/lib/supabase";
+import type { Model } from "@/lib/models";
 
 // Fetch all models from Supabase
 export async function fetchModels(): Promise<Model[]> {
   try {
-    const supabaseServer = createSupabaseServer()
-    const { data, error } = await supabaseServer.from("models").select("*").order("elo_rating", { ascending: false })
+    const supabaseServer = createSupabaseServer();
+    const { data, error } = await supabaseServer
+      .from("models")
+      .select("*")
+      .order("elo_rating", { ascending: false });
 
     if (error) {
-      console.error("Error fetching models:", error)
-      throw new Error("Failed to fetch models")
+      console.error("Error fetching models:", error);
+      throw new Error("Failed to fetch models");
     }
 
     if (!data) {
-      return []
+      return [];
     }
 
     // Transform the data to match our Model interface
@@ -27,11 +30,11 @@ export async function fetchModels(): Promise<Model[]> {
       losses: model.losses,
       ties: model.ties,
       totalVotes: model.total_votes,
-    }))
+    }));
   } catch (error) {
-    console.error("Error in fetchModels:", error)
+    console.error("Error in fetchModels:", error);
     // Return empty array instead of throwing to prevent client-side errors
-    return []
+    return [];
   }
 }
 
@@ -44,7 +47,7 @@ export async function updateModelsAfterVote(
   choice: "A" | "B" | "TIE",
 ): Promise<boolean> {
   try {
-    const supabaseServer = createSupabaseServer()
+    const supabaseServer = createSupabaseServer();
     const { error } = await supabaseServer.rpc("update_models_after_vote", {
       model_a_id: modelAId,
       model_b_id: modelBId,
@@ -53,16 +56,16 @@ export async function updateModelsAfterVote(
       choice_a: choice === "A" ? 1 : 0,
       choice_b: choice === "B" ? 1 : 0,
       choice_tie: choice === "TIE" ? 1 : 0,
-    })
+    });
 
     if (error) {
-      console.error("Error updating models:", error)
-      return false
+      console.error("Error updating models:", error);
+      return false;
     }
 
-    return true
+    return true;
   } catch (error) {
-    console.error("Error in updateModelsAfterVote:", error)
-    return false
+    console.error("Error in updateModelsAfterVote:", error);
+    return false;
   }
 }
